@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-logo"></div>
+    </header>
+    <div class="main">
+        <div class="some-text">
+            <span class="heading1">Recipe Finder!</span>
+            <span class="heading2" style="margin-bottom: 0px;">Don't know what to cook for dinner?</span>
+            <span class="heading4" style="padding: 20px;">Welcome to the Recipe Finder App, your ultimate companion for discovering delicious recipes! Whether you’re looking for inspiration for your next meal or trying to whip something up with the ingredients you already have, this app has got you covered. Simply input your desired ingredients or keywords, and our app will serve up a variety of mouthwatering recipes tailored to your taste. Save your favorites and explore cooking like never before!</span>
+            <div>
+                <h3>Ingredients List:</h3>
+                <ul id="ingredients-list">
+                    {% for ingredient in ingredients %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <h2>Add Ingredients</h2>
+            <form action="/" method="POST">
+                <input 
+                    type="text" 
+                    name="ingredient" 
+                    id="ingredient-input" 
+                    placeholder="Enter an ingredient" 
+                    required 
+                />
+                <button type="submit">Add Ingredient</button>
+                <a href="{{ url_for('result') }}" class="btn">View Recipes</a>
+            </form>
+
+            <br><br>
+        </div>
+        <footer>
+            <p>© 2024 Recipe Finder | All rights reserved.</p>
+        </footer>
+    </body>
+    </html>
